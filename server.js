@@ -42,14 +42,14 @@ app.post("/send", async (req, res) => {
 
     // Envio do email
     const info = await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_USER,
-      subject: "Novo contato do site 🎶",
-      text: message,
-      html: `<p><b>Nome:</b> ${name}</p>
-             <p><b>Email:</b> ${email}</p>
-             <p><b>Mensagem:</b></p>
-             <p>${message}</p>`
+    from: `"Meu Site" <${process.env.EMAIL_USER}>`, // sempre seu email
+    to: process.env.EMAIL_USER, // pode ser o mesmo email ou outro que receberá
+    subject: "Novo contato do site 🎶",
+    text: message,
+    html: `<p><b>Nome:</b> ${name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Mensagem:</b></p>
+            <p>${message}</p>`
     });
 
     console.log("Email enviado:", info.response);
