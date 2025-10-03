@@ -1,0 +1,9 @@
+# Arquivo de variáveis secretas
+.env
+
+# Dependências (não precisam ir pro GitHub)
+node_modules/
+
+# Logs
+npm-debug.log
+yarn-error.log

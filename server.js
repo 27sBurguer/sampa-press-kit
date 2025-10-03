@@ -22,11 +22,13 @@ app.post("/send", async (req, res) => {
   try {
     // Configuração do Nodemailer
     let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true para 465, false para 587
+    auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-      }
+    }
     });
 
     // Testar conexão com o servidor SMTP
