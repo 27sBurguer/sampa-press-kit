@@ -843,7 +843,7 @@
         };
 
         try {
-          const res = await fetch("https://sampa-press-kit.onrender.com", {
+          const res = await fetch("https://sampa-press-kit.onrender.com/send", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -852,12 +852,14 @@
           const result = await res.json();
 
           if (result.ok) {
+            alert("Email enviado com sucesso!");
             form.reset();
           } else {
             alert("Erro: " + result.error);
           }
         } catch (err) {
           alert("Falha na conexão com o servidor.");
+          console.error(err);
         }
       });
     </script>
