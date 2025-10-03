@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Press Kit Pro – Dj Sampa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #1e1e1e;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 620px;
+      background: #111;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: url("UpHeader1.png") center/cover no-repeat;
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid #c49a6c;
+      opacity: 0.3;
+      animation: pulse 4s infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(43, 34, 34, 0.5), rgba(0,0,0,1));
+    }
+
+    .logo {
+      position: relative;
+      z-index: 1;
+      font-size: 110px;
+      font-weight: bold;
+      color: #c49a6c;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-shadow: 0 0 20px rgba(196, 154, 108, 0.7);
+      animation: logoBeat 1s infinite ease-in-out, logoGlow 3s infinite alternate;
+    }
+
+    /* Batida da música */
+    @keyframes logoBeat {
+      0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 20px rgba(196, 154, 108, 0.7);
+      }
+      25% {
+        transform: scale(1.01);
+        text-shadow: 0 0 30px rgba(196, 154, 108, 1);
+      }
+      50% {
+        transform: scale(0.99);
+        text-shadow: 0 0 15px rgba(196, 154, 108, 0.5);
+      }
+      75% {
+        transform: scale(1.01);
+        text-shadow: 0 0 40px rgba(196, 154, 108, 1), 0 0 60px rgba(196, 154, 108, 0.7);
+      }
+    }
+
+    /* ICON BUTTONS */
+    .buttons {
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      animation: slideUp 1s ease-out 0.5s both;
+    }
+
+    .btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #c49a6c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #c49a6c;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(196, 154, 108, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: #c49a6c;
+      color: #111;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 20px rgba(196, 154, 108, 0.8);
+    }
+
+    /* SOCIAL ICONS */
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 24px 0 36px;
+      animation: slideUp 1s ease-out 0.7s both;
+    }
+
+    .social a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #c49a6c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #c49a6c;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(196, 154, 108, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .social a:hover::before {
+      left: 100%;
+    }
+
+    .social a:hover {
+      background: #c49a6c;
+      color: #111;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 4px 12px rgba(196, 154, 108, 0.5);
+    }
+
+    /* SECTIONS */
+    section {
+      margin: 60px 0;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 26px;
+      color: #c49a6c;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #c49a6c;
+      transition: width 0.5s ease;
+    }
+
+    section.visible h2::after {
+      width: 80px;
+    }
+
+    section hr {
+      width: 80px;
+      margin: 0 auto 24px;
+      border: 1px solid #c49a6c;
+      opacity: 0.7;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 340px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video iframe:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      perspective: 1000px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05) rotateY(5deg) rotateX(5deg);
+      z-index: 10;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+    }
+
+    footer {
+      margin: 40px 0;
+      color: #888;
+      font-size: 14px;
+      padding: 20px;
+      border-top: 0px solid #333;
+      animation: fadeIn 1s ease-out 1.5s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: scale(1.05);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes logoGlow {
+      0% {
+        text-shadow: 0 0 20px rgba(196, 154, 108, 0.7);
+      }
+      100% {
+        text-shadow: 0 0 30px rgba(196, 154, 108, 1), 0 0 40px rgba(196, 154, 108, 0.8);
+      }
+    }
+
+    .bio {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 40px 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+      font-style: italic;
+    }
+
+    .bio.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bio-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.1;
+      filter: sepia(1) hue-rotate(10deg);
+    }
+
+    .bio-content h2 {
+      color: #c49a6c;
+      font-size: 26px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .bio-content h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #c49a6c;
+      transition: width 0.5s ease;
+    }
+
+    .bio.visible .bio-content h2::after {
+      width: 80px;
+    }
+
+    .carousel {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      height: 120px;
+      margin: 20px 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      opacity: 0.8;
+      transform: scale(0.8);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-item.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .carousel p {
+      color: #eee;
+      font-size: 18px;
+      max-width: 90%;
+      transition: opacity 0.5s ease;
+      line-height: 1.5;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    .lang-buttons {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .flag-btn {
+      font-size: 22px;
+      background: transparent;
+      border: 1px solid #c49a6c;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flag-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(196, 154, 108, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .flag-btn:hover::before {
+      left: 100%;
+    }
+
+    .flag-btn:hover {
+      background: #c49a6c;
+      color: #111;
+      transform: scale(1.05);
+    }
+
+    .carousel-controls {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .carousel-controls button {
+      background: transparent;
+      border: 1px solid #c49a6c;
+      color: #c49a6c;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-controls button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(196, 154, 108, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .carousel-controls button:hover::before {
+      left: 100%;
+    }
+
+    .carousel-controls button:hover {
+      background: #c49a6c;
+      color: #111;
+      transform: scale(1.05);
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero" id="hero">
+      <div class="logo">DJSAMPA</div>
+    </div>
+
+    <div class="buttons">
+      <div class="btn"><i class="fas fa-music"></i></div>
+      <a href="#contact" class="btn"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <div class="social">
+      <a href="https://www.instagram.com/djsampa_atx/"><i class="fab fa-instagram"></i></a>
+      <a href="https://soundcloud.com/djsampaatx"><i class="fab fa-soundcloud"></i></a>
+    </div>
+
+    <section id="tracks">
+      <h2>TRACKS AND DJ SETS</h2>
+      <p class="coming-soon">COMING SOON</p>
+
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+      </div>
+      <hr>
+    </section>
+    
+    <section class="bio" id="bio">
+      <img src="BioHighlight.jpeg" alt="DJ Sampa" class="bio-img">
+
+      <div class="bio-content">
+        <h2>BIO AND HIGHLIGHTS</h2>
+
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-item active">
+              <p data-en="On July 19, in São Paulo, Brazil, I performed at the Martinelli Building, part of the Tóquio group, alongside DJs Mau Mau, Camilo Rocha, Renato Cohen, and Linda Green, delivering a disco and House Music set together with DJ Shoyos." data-pt="Em 19 de julho, em São Paulo, Brasil, toquei no Edifício Martinelli, do grupo Tóquio, ao lado de DJs como Dj Mau Mau, Camilo Rocha, Renato Cohen e Linda Green, apresentando um set de disco e House Music junto com o DJ Shoyos.">
+              </p>
+            </div>
+            <div class="carousel-item">
+              <p data-en="In Austin, Texas, I had the pleasure of performing at  Sahara lounge , where I presented a set of Brazilian House, House Music, and Afro House, as well as playing at a special event called Brazilian Night." data-pt="Em Austin, Texas, tive o prazer de tocar na Casa Sahara, onde apresentei um set de Brazilian House, House Music , Afro House e também participei de um evento especial chamado Brazilian Night.">
+              </p>
+            </div>
+            <div class="carousel-item">
+              <p data-en="In Austin, Texas, I had the pleasure of performing at Ani's Day & Night, an amazing and vibrant coffee shop, where I played sets of House Music and Brazilian House during an unforgettable Coffee Party." data-pt="Em Austin, Texas, tive o prazer de tocar no coffee shop Ani's Day & Night, um lugar incrível e vibrante, onde apresentei sets de House Music e Brazilian House em uma inesquecível Coffee Party.">
+              </p>
+            </div>
+            <div class="carousel-item">
+              <p data-en="In March, during SXSW in Austin, Texas, I took part in a TV Globo happy hour event. I performed as a DJ and also played alongside Brazilian music artists, including Simoninha and Jairzinho." data-pt="Em março, durante o SXSW em Austin, Texas, participei de um evento de Happy Hour da TV Globo. Atuei como DJ e toquei junto com artistas da música brasileira, incluindo Simoninha e Jairzinho.">
+              </p>
+            </div>
+            <div class="carousel-item">
+              <p data-en="In Austin, I also performed at NeoGrotto, an extension of the Coconut Club, presenting sets of House, Afro, and Brazilian beats." data-pt="Em Austin, também me apresentei no NeoGrotto, extensão do Coconut Club, com sets de House, Afro e Brazilian Beats.">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-buttons">
+          <button onclick="setLang('pt')" class="flag-btn">
+            <img src="https://flagcdn.com/w20/br.png" alt="BR">
+          </button>
+          <button onclick="setLang('en')" class="flag-btn">
+            <img src="https://flagcdn.com/w20/us.png" alt="US">
+          </button>
+        </div>
+
+        <div class="carousel-controls">
+          <button onclick="prevSlide()">⬅</button>
+          <button onclick="nextSlide()">➡</button>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .coming-soon {
+      font-size: 17px;
+      color: #c49a6c;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .highlights {
+      position: relative;
+      min-height: 400px;
+      margin: 80px 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .highlight-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+      filter: grayscale(1) contrast(1.1);
+    }
+
+    .highlight-box.no-bg {
+      position: relative;
+      max-width: 900px;
+      padding: 20px 40px;
+      z-index: 2;
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    .highlight-box .en {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 25px;
+      font-style: italic;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    .highlight-box .pt {
+      font-size: 18px;
+      color: #e3c184;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    /* Botão do envelope */
+    .contact-btn {
+      font-size: 20px;
+      color: #fff;
+      background: #c49a6c;
+      padding: 10px 14px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .contact-btn:hover {
+      background: #a87f4c;
+    }
+
+#contact {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(160deg, #111 0%, #1e1e1e 50%, #2a1a0f 100%);
+  color: #fff;
+  position: relative;
+}
+
+#contact h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #c49a6c;
+  position: relative;
+  display: inline-block;
+}
+
+#contact h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background: #c49a6c;
+  transition: width 0.5s ease;
+}
+
+#contact:hover h2::after {
+  width: 100px;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 30px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border: 1px solid #c49a6c;
+  background: #1a1a1a;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #e3c184;
+  box-shadow: 0 0 10px rgba(196, 154, 108, 0.6);
+}
+
+.contact-form textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 14px;
+  background: #c49a6c;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s, transform 0.2s;
+}
+
+.contact-form button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.contact-form button:hover::before {
+  left: 100%;
+}
+
+.contact-form button:hover {
+  background: #e3c184;
+  transform: scale(1.05);
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-box i {
+  position: absolute;
+  left: 14px;
+  color: #c49a6c;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.input-box input,
+.input-box textarea {
+  width: 100%;
+  padding: 14px 16px 14px 42px; /* espaço para o ícone */
+  border: 1px solid #c49a6c;
+  background: #1a1a1a;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-box textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.input-box input:focus,
+.input-box textarea:focus {
+  border-color: #e3c184;
+  box-shadow: 0 0 10px rgba(196, 154, 108, 0.6);
+}
+    </style>
+
+    <section id="gallery">
+      <h2>GALLERY</h2>
+      <div class="gallery">
+        <img src="Galery1.jpeg" alt="DJ set 1">
+        <img src="Galery2.jpeg" alt="DJ set 2">
+        <img src="Galery3.jpeg" alt="DJ set 3">
+        <img src="Galery4.jpeg" alt="DJ set 4">
+        <img src="Galery5.jpeg" alt="DJ set 5">
+        <img src="Galery6.jpeg" alt="DJ set 6">
+        <img src="Galery7.jpeg" alt="DJ set 7">
+        <img src="Galery8.jpeg" alt="DJ set 8">
+        <img src="Galery9.jpeg" alt="DJ set 9">
+        <img src="Galery10.jpeg" alt="DJ set 10">
+        <img src="Galery11.jpeg" alt="DJ set 11">
+        <img src="Galery12.jpeg" alt="DJ set 12">
+        <img src="Galery13.jpeg" alt="DJ set 13">
+        <img src="Galery14.jpeg" alt="DJ set 14">
+        <img src="Galery15.jpeg" alt="DJ set 15">
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Entre em contato comigo para colaborações, shows ou qualquer dúvida.</p>
+      
+      <form action="https://formspree.io/f/mzzjgjgo" method="POST" class="contact-form">
+        <div class="input-box">
+          <i class="fas fa-user"></i>
+          <input type="text" name="name" placeholder="Seu Nome" required>
+        </div>
+        <div class="input-box">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="email" placeholder="Seu Email" required>
+        </div>
+        <div class="input-box textarea-box">
+          <i class="fas fa-comment-alt"></i>
+          <textarea name="message" placeholder="Sua Mensagem" required></textarea>
+        </div>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+      </form>
+    </section>
+
+    <script>
+      const form = document.querySelector(".contact-form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value
+        };
+
+        try {
+          const res = await fetch("http://localhost:3000/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          });
+
+          const result = await res.json();
+
+          if (result.ok) {
+            form.reset();
+          } else {
+            alert("Erro: " + result.error);
+          }
+        } catch (err) {
+          alert("Falha na conexão com o servidor.");
+        }
+      });
+    </script>
+
+    <footer>
+      Feito por Niki. Todos os direitos reservados 2025 ©
+    </footer>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    let currentLang = "pt";
+    const slides = document.querySelectorAll('.carousel-item');
+    const track = document.querySelector('.carousel-track');
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide) => slide.classList.remove('active'));
+      slides[currentSlide].classList.add('active');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      updateLang();
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      updateLang();
+    }
+
+    function updateLang() {
+      const activeText = slides[currentSlide].querySelector("p");
+      activeText.style.opacity = 0;
+      setTimeout(() => {
+        activeText.textContent = activeText.getAttribute(`data-${currentLang}`);
+        activeText.style.opacity = 1;
+      }, 300);
+    }
+
+    const sections = document.querySelectorAll('section, .bio');
+    const dots = document.querySelectorAll('.scroll-dot');
+
+    function checkScroll() {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          section.classList.add('visible');
+          
+          dots.forEach(dot => dot.classList.remove('active'));
+          dots[index].classList.add('active');
+        }
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const sectionId = dot.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    showSlide(currentSlide);
+    
+    window.addEventListener('load', checkScroll);
+    window.addEventListener('scroll', checkScroll);
+    
+    setTimeout(checkScroll, 100);
+  </script>
+</body>
+</html>
